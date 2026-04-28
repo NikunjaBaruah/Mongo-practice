@@ -1,5 +1,5 @@
-
-
+// use test
+// show collections
 // db.products.insertMany([
 //     { name: "Laptop", category: "Electronics", price: 55000, stock: 10, brand: "HP", rating: 4.5 },
 //     { name: "Smartphone", category: "Electronics", price: 20000, stock: 25, brand: "Samsung", rating: 4.2 },
@@ -97,7 +97,69 @@
 // Find products where:
 // brand = Apple
 // OR rating > 4.5
+// use test;
 // db.products.find({$or:[
 //     {brand: "Apple"},
 //     {rating: { $gt: 4.5} }
 // ]})
+// 🔹 4. Projection
+// Show only name and price of all products
+// db.products.find({}, { name: 1, price: 1,_id: 0 })
+// Show only name, brand, rating (exclude _id)
+// db.products.find({},{name:1, brand:1, rating:1,_id:0})
+// Show only category and stock
+// db.products.find({},{category:1, stock:1, _id :0})
+// Sort all products by price (ascending)
+// db.products.find().sort({price:1})
+// Sort all products by price (descending)
+// db.products.find().sort({price:-1})
+// Sort products by rating (highest first)
+// db.products.find().sort({rating:-1})
+// Sort by stock (lowest first)
+// db.products.find().sort({stock:1})
+// 🔹 6. Limit & Skip
+// Show first 5 products
+// db.products.find().limit(5)
+// Skip first 5 and show next 5 products
+// db.products.find().limit(5).skip(5)
+// Show top 3 most expensive products
+// db.products.find().sort({price:-1}).limit(3)
+// Show 5 products after skipping 10
+// db.products.find().skip(10)
+// 7. Update (updateOne)
+
+// Update price of Laptop to 60000
+// db.products.updateOne({name:"Laptop"},
+// {$set:{price:60000}})
+// Update stock of Smartphone to 50
+// db.products.updateOne({name:"Smartphone"},{$set:{stock:50}})
+// Change brand of Mouse to "Logitech Pro"
+// db.products.updateOne({name:"Mouse"},{$set:{brand:"Logitech Pro"}})
+// Increase rating of Tablet to 4.9
+// db.products.updateOne({name:"Tablet"},{$inc:{rating:0.2}})
+// Delete (deleteOne)
+// Delete product with name Cap
+// db.products.deleteOne({name:"Cap"})
+// Delete product where price is less than 900
+// db.products.deleteOne({price:{$lt:900}})
+// db.products.deleteMany({price:{$lt:900}})
+// Delete product with brand Puma
+// db.products.deleteOne({brand:"Puma"})
+// Delete one product from category Accessoriesdb
+// db.products.deleteOne({category:"Accessories"})
+// Find Electronics products with price > 5000 and rating > 4
+// db.products.find({
+//     category:{$in:["Electronics"]},
+//     price:{$gt:5000},
+//     rating:{$gt: 4}})
+// Find products where:
+// brand is HP or Dell
+// AND price < 20000
+// db.products.find({
+//     brand:{$in:["HP","Dell"]},
+//     price: {$lt:5000}
+
+// })
+// Show only name & price of products with price > 10000
+// Sort Electronics products by rating and show top 3
+// Find products not in category Fashion and price < 3000
