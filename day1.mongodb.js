@@ -41,7 +41,7 @@
 // db.products.find({price: {$gt :10000}})
 // Find products with rating greater than 4.3
 // db.products.find({rating: {$gt :4.3}})
-//  $lt
+// 📉 $lt
 // Find products with price less than 1000
 // db.products.find({price: {$lt: 1000}})
 // Find products with stock less than 20
@@ -50,13 +50,13 @@
 // db.products.find({brand: {$in: ["HP","Dell","Apple"]}})
 // Find products where category is Electronics or Accessories
 // db.products.find({ category: { $in: ["Electronics", "Accessories"] } })
-//  $nin
+// 🚫 $nin
 // Find products where brand is not in (HP, Dell)
 // db.products.find({brand:{$nin:["HP","Dell"]}})
 // Find products where category is not in (Fashion, Accessories)
 // db.products.find({category:{$nin:["Fashion","Accessories"]}})
-//  3. Logical Operators
-//  $and
+// 🔹 3. Logical Operators
+// 🔗 $and
 // Find products where:
 // category = Electronics
 // AND price > 10000
@@ -86,7 +86,7 @@
 //     stock: { $gt: 20 } 
 
 // })
-//  $or
+// 🔀 $or
 // Find products where:
 // category = Fashion
 // OR price < 1000
@@ -102,7 +102,7 @@
 //     {brand: "Apple"},
 //     {rating: { $gt: 4.5} }
 // ]})
-//  4. Projection
+// 🔹 4. Projection
 // Show only name and price of all products
 // db.products.find({}, { name: 1, price: 1,_id: 0 })
 // Show only name, brand, rating (exclude _id)
@@ -117,7 +117,7 @@
 // db.products.find().sort({rating:-1})
 // Sort by stock (lowest first)
 // db.products.find().sort({stock:1})
-//  6. Limit & Skip
+// 🔹 6. Limit & Skip
 // Show first 5 products
 // db.products.find().limit(5)
 // Skip first 5 and show next 5 products
@@ -156,10 +156,11 @@
 // brand is HP or Dell
 // AND price < 20000
 // db.products.find({
-//     brand:{$in:["HP","Dell"]},
-//     price: {$lt:5000}
+    // brand:{$in:["HP","Dell"]},
+    // price: {$lt:5000}
 
 // })
 // Show only name & price of products with price > 10000
 // Sort Electronics products by rating and show top 3
 // Find products not in category Fashion and price < 3000
+db.products.aggregate({$match:{category:"Electronics"}})
